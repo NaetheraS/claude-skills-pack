@@ -1,5 +1,11 @@
 # Claude Skills Pack
 
+[![GitHub stars](https://img.shields.io/github/stars/atalovesyou/claude-skills-pack?style=flat-square)](https://github.com/atalovesyou/claude-skills-pack/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/atalovesyou/claude-skills-pack?style=flat-square)](https://github.com/atalovesyou/claude-skills-pack/network/members)
+[![GitHub last commit](https://img.shields.io/github/last-commit/atalovesyou/claude-skills-pack?style=flat-square)](https://github.com/atalovesyou/claude-skills-pack/commits/main)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Claude Code](https://img.shields.io/badge/Claude-Code-blueviolet?style=flat-square)](https://claude.com/claude-code)
+
 A curated collection of 25 skills and 14 plugins for Claude Code that enhance your AI-assisted development workflow.
 
 ## Quick Install
