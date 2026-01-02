@@ -31,7 +31,8 @@ echo "-------------------------------------------"
 for skill_dir in "$SCRIPT_DIR/skills"/*/; do
     skill_name=$(basename "$skill_dir")
     echo "  Installing skill: $skill_name"
-    cp -r "$skill_dir" "$SKILLS_DIR/"
+    # Remove trailing slash for proper cp behavior
+    cp -r "${skill_dir%/}" "$SKILLS_DIR/"
 done
 
 echo ""
