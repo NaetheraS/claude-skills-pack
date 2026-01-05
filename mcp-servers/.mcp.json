@@ -12,71 +12,47 @@
     "coolify": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "coolify-mcp-server"],
+      "args": ["-y", "@masonator/coolify-mcp"],
       "env": {
-        "COOLIFY_API_URL": "http://YOUR_COOLIFY_IP:8000",
-        "COOLIFY_API_TOKEN": "YOUR_API_TOKEN"
+        "COOLIFY_BASE_URL": "http://YOUR_COOLIFY_IP:8000",
+        "COOLIFY_ACCESS_TOKEN": "YOUR_API_TOKEN"
       }
     },
     "context7": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@anthropic-ai/context7-mcp"]
+      "args": ["-y", "@upstash/context7-mcp@latest"]
     },
     "playwright": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-playwright"]
+      "args": ["@playwright/mcp@latest"]
+    },
+    "cloudflare": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@cloudflare/mcp-server-cloudflare"],
+      "env": {
+        "CLOUDFLARE_ACCOUNT_ID": "YOUR_ACCOUNT_ID"
+      }
     },
     "cloudflare-docs": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-cloudflare-docs"]
+      "args": ["mcp-remote", "https://docs.mcp.cloudflare.com/mcp"]
     },
-    "cloudflare-radar": {
+    "github": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-cloudflare-radar"],
-      "env": {
-        "CLOUDFLARE_API_TOKEN": "YOUR_CLOUDFLARE_API_TOKEN"
-      }
-    },
-    "cloudflare-browser": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-cloudflare-browser"],
-      "env": {
-        "CLOUDFLARE_API_TOKEN": "YOUR_CLOUDFLARE_API_TOKEN"
-      }
-    },
-    "github-api": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
-      }
-    },
-    "github-remote": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-github-remote"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
-      }
-    },
-    "vibe-kanban": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-vibe-kanban"],
-      "env": {
-        "VIBE_KANBAN_API_KEY": "YOUR_API_KEY"
       }
     },
     "twitter": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-twitter"],
+      "args": ["-y", "twitter-mcp"],
       "env": {
         "TWITTER_API_KEY": "YOUR_API_KEY",
         "TWITTER_API_SECRET": "YOUR_API_SECRET",
