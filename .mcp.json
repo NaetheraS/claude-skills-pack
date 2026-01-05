@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "vibe_kanban": {
+      "command": "npx",
+      "args": ["-y", "vibe-kanban@latest", "--mcp"]
+    },
+    "render": {
+      "type": "http",
+      "url": "https://mcp.render.com/mcp"
+    },
+    "modal-toolbox": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["modal-mcp-toolbox"]
+    }
+  }
+}
