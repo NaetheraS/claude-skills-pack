@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude-Code-blueviolet?style=flat-square)](https://claude.com/claude-code)
 
-A curated collection of 25 skills and 14 plugins for Claude Code that enhance your AI-assisted development workflow.
+A curated collection of 25 skills, 14 plugins, and 12 MCP servers for Claude Code that enhance your AI-assisted development workflow.
 
 ## Demo
 
@@ -98,27 +98,82 @@ The installer adds these plugin marketplaces:
 - `dotclaude-plugins` - Community plugins
 - `anthropic-agent-skills` - Official Anthropic skills
 
-### MCP Servers (Optional)
+### MCP Servers (12)
 
-Pre-configured MCP servers for enhanced capabilities:
+Pre-configured MCP servers for enhanced capabilities. Copy the config or install individually:
 
-| Server | Type | Description |
-|--------|------|-------------|
-| `render` | HTTP | Deploy and manage apps on [Render](https://render.com) |
-| `modal-toolbox` | stdio | Run Python in sandboxes, generate images with [Modal](https://modal.com) |
-
-Install MCP servers manually:
-```bash
-# Render (cloud deployment)
-claude mcp add render --type http --url https://mcp.render.com/mcp
-
-# Modal Toolbox (Python sandboxes, image generation)
-claude mcp add modal-toolbox --type stdio -- uvx modal-mcp-toolbox
-```
-
-Or copy the config file:
 ```bash
 cp mcp-servers/.mcp.json ~/.mcp.json
+```
+
+#### Cloud & Infrastructure
+
+| Server | Description | Requires |
+|--------|-------------|----------|
+| `render` | Deploy and manage apps on [Render](https://render.com) | Render account |
+| `coolify` | Self-hosted PaaS management for [Coolify](https://coolify.io) | `COOLIFY_API_URL`, `COOLIFY_API_TOKEN` |
+
+#### AI & Development Tools
+
+| Server | Description | Requires |
+|--------|-------------|----------|
+| `modal-toolbox` | Run Python in sandboxes, generate images with [Modal](https://modal.com) | Modal account |
+| `context7` | Query up-to-date library documentation | None |
+
+#### Browser & Web
+
+| Server | Description | Requires |
+|--------|-------------|----------|
+| `playwright` | Browser automation, screenshots, testing | None |
+| `cloudflare-browser` | Web page rendering, screenshots, markdown conversion | `CLOUDFLARE_API_TOKEN` |
+| `cloudflare-docs` | Search Cloudflare documentation | None |
+
+#### GitHub Integration
+
+| Server | Description | Requires |
+|--------|-------------|----------|
+| `github-api` | Full GitHub API access (issues, PRs, repos) | `GITHUB_PERSONAL_ACCESS_TOKEN` |
+| `github-remote` | Official GitHub MCP for remote operations | `GITHUB_PERSONAL_ACCESS_TOKEN` |
+
+#### Analytics & Data
+
+| Server | Description | Requires |
+|--------|-------------|----------|
+| `cloudflare-radar` | Internet traffic trends, domain rankings, attack data | `CLOUDFLARE_API_TOKEN` |
+
+#### Productivity
+
+| Server | Description | Requires |
+|--------|-------------|----------|
+| `vibe-kanban` | Task and project management | `VIBE_KANBAN_API_KEY` |
+| `twitter` | Post and search tweets | Twitter API credentials |
+
+#### Install Individual Servers
+
+```bash
+# Cloud & Infrastructure
+claude mcp add render --type http --url https://mcp.render.com/mcp
+claude mcp add coolify --type stdio -- npx -y coolify-mcp-server
+
+# AI & Development
+claude mcp add modal-toolbox --type stdio -- uvx modal-mcp-toolbox
+claude mcp add context7 --type stdio -- npx -y @anthropic-ai/context7-mcp
+
+# Browser & Web
+claude mcp add playwright --type stdio -- npx -y @anthropic-ai/mcp-playwright
+claude mcp add cloudflare-browser --type stdio -- npx -y @anthropic-ai/mcp-cloudflare-browser
+claude mcp add cloudflare-docs --type stdio -- npx -y @anthropic-ai/mcp-cloudflare-docs
+
+# GitHub
+claude mcp add github-api --type stdio -- npx -y @modelcontextprotocol/server-github
+claude mcp add github-remote --type stdio -- npx -y @anthropic-ai/mcp-github-remote
+
+# Analytics
+claude mcp add cloudflare-radar --type stdio -- npx -y @anthropic-ai/mcp-cloudflare-radar
+
+# Productivity
+claude mcp add vibe-kanban --type stdio -- npx -y @anthropic-ai/mcp-vibe-kanban
+claude mcp add twitter --type stdio -- npx -y @anthropic-ai/mcp-twitter
 ```
 
 ## Manual Installation
@@ -177,6 +232,11 @@ rm -rf ~/.claude/skills/*
 To remove plugins:
 ```bash
 claude plugins uninstall PLUGIN_NAME
+```
+
+To remove MCP servers:
+```bash
+claude mcp remove SERVER_NAME
 ```
 
 ## Contributing
