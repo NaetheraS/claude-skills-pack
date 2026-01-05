@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude-Code-blueviolet?style=flat-square)](https://claude.com/claude-code)
 
-A curated collection of 25 skills, 14 plugins, and 12 MCP servers for Claude Code that enhance your AI-assisted development workflow.
+A curated collection of 25 skills, 14 plugins, and 9 MCP servers for Claude Code that enhance your AI-assisted development workflow.
 
 ## Demo
 
@@ -98,7 +98,7 @@ The installer adds these plugin marketplaces:
 - `dotclaude-plugins` - Community plugins
 - `anthropic-agent-skills` - Official Anthropic skills
 
-### MCP Servers (12)
+### MCP Servers (9)
 
 Pre-configured MCP servers for enhanced capabilities. Copy the config or install individually:
 
@@ -108,73 +108,85 @@ cp mcp-servers/.mcp.json ~/.mcp.json
 
 #### Cloud & Infrastructure
 
-| Server | Description | Requires |
-|--------|-------------|----------|
-| `render` | Deploy and manage apps on [Render](https://render.com) | Render account |
-| `coolify` | Self-hosted PaaS management for [Coolify](https://coolify.io) | `COOLIFY_API_URL`, `COOLIFY_API_TOKEN` |
+| Server | Package | Description |
+|--------|---------|-------------|
+| `render` | HTTP endpoint | Deploy and manage apps on [Render](https://render.com) |
+| `coolify` | [`@masonator/coolify-mcp`](https://www.npmjs.com/package/@masonator/coolify-mcp) | Self-hosted PaaS management for [Coolify](https://coolify.io) |
 
 #### AI & Development Tools
 
-| Server | Description | Requires |
-|--------|-------------|----------|
-| `modal-toolbox` | Run Python in sandboxes, generate images with [Modal](https://modal.com) | Modal account |
-| `context7` | Query up-to-date library documentation | None |
+| Server | Package | Description |
+|--------|---------|-------------|
+| `modal-toolbox` | `uvx modal-mcp-toolbox` | Run Python in sandboxes, generate images with [Modal](https://modal.com) |
+| `context7` | [`@upstash/context7-mcp`](https://www.npmjs.com/package/@upstash/context7-mcp) | Query up-to-date library documentation |
 
 #### Browser & Web
 
-| Server | Description | Requires |
-|--------|-------------|----------|
-| `playwright` | Browser automation, screenshots, testing | None |
-| `cloudflare-browser` | Web page rendering, screenshots, markdown conversion | `CLOUDFLARE_API_TOKEN` |
-| `cloudflare-docs` | Search Cloudflare documentation | None |
+| Server | Package | Description |
+|--------|---------|-------------|
+| `playwright` | [`@playwright/mcp`](https://www.npmjs.com/package/@playwright/mcp) | Browser automation, screenshots, testing |
+| `cloudflare` | [`@cloudflare/mcp-server-cloudflare`](https://www.npmjs.com/package/@cloudflare/mcp-server-cloudflare) | Manage Cloudflare resources |
+| `cloudflare-docs` | `mcp-remote` → [docs.mcp.cloudflare.com](https://docs.mcp.cloudflare.com) | Search Cloudflare documentation |
 
 #### GitHub Integration
 
-| Server | Description | Requires |
-|--------|-------------|----------|
-| `github-api` | Full GitHub API access (issues, PRs, repos) | `GITHUB_PERSONAL_ACCESS_TOKEN` |
-| `github-remote` | Official GitHub MCP for remote operations | `GITHUB_PERSONAL_ACCESS_TOKEN` |
+| Server | Package | Description |
+|--------|---------|-------------|
+| `github` | [`ghcr.io/github/github-mcp-server`](https://github.com/github/github-mcp-server) | Official GitHub MCP (Docker) |
 
-#### Analytics & Data
+#### Social
 
-| Server | Description | Requires |
-|--------|-------------|----------|
-| `cloudflare-radar` | Internet traffic trends, domain rankings, attack data | `CLOUDFLARE_API_TOKEN` |
-
-#### Productivity
-
-| Server | Description | Requires |
-|--------|-------------|----------|
-| `vibe-kanban` | Task and project management | `VIBE_KANBAN_API_KEY` |
-| `twitter` | Post and search tweets | Twitter API credentials |
+| Server | Package | Description |
+|--------|---------|-------------|
+| `twitter` | `twitter-mcp` | Post and search tweets |
 
 #### Install Individual Servers
 
 ```bash
 # Cloud & Infrastructure
 claude mcp add render --type http --url https://mcp.render.com/mcp
-claude mcp add coolify --type stdio -- npx -y coolify-mcp-server
+
+claude mcp add coolify \
+  --env COOLIFY_BASE_URL="https://your-coolify.com" \
+  --env COOLIFY_ACCESS_TOKEN="your-token" \
+  -- npx -y @masonator/coolify-mcp
 
 # AI & Development
-claude mcp add modal-toolbox --type stdio -- uvx modal-mcp-toolbox
-claude mcp add context7 --type stdio -- npx -y @anthropic-ai/context7-mcp
+claude mcp add modal-toolbox -- uvx modal-mcp-toolbox
+
+claude mcp add context7 -- npx -y @upstash/context7-mcp@latest
 
 # Browser & Web
-claude mcp add playwright --type stdio -- npx -y @anthropic-ai/mcp-playwright
-claude mcp add cloudflare-browser --type stdio -- npx -y @anthropic-ai/mcp-cloudflare-browser
-claude mcp add cloudflare-docs --type stdio -- npx -y @anthropic-ai/mcp-cloudflare-docs
+claude mcp add playwright -- npx @playwright/mcp@latest
 
-# GitHub
-claude mcp add github-api --type stdio -- npx -y @modelcontextprotocol/server-github
-claude mcp add github-remote --type stdio -- npx -y @anthropic-ai/mcp-github-remote
+claude mcp add cloudflare \
+  --env CLOUDFLARE_ACCOUNT_ID="your-account-id" \
+  -- npx -y @cloudflare/mcp-server-cloudflare
 
-# Analytics
-claude mcp add cloudflare-radar --type stdio -- npx -y @anthropic-ai/mcp-cloudflare-radar
+claude mcp add cloudflare-docs -- npx mcp-remote https://docs.mcp.cloudflare.com/mcp
 
-# Productivity
-claude mcp add vibe-kanban --type stdio -- npx -y @anthropic-ai/mcp-vibe-kanban
-claude mcp add twitter --type stdio -- npx -y @anthropic-ai/mcp-twitter
+# GitHub (requires Docker)
+claude mcp add github \
+  -e GITHUB_PERSONAL_ACCESS_TOKEN=your-token \
+  -- docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/github/github-mcp-server
+
+# Twitter
+claude mcp add twitter \
+  --env TWITTER_API_KEY="key" \
+  --env TWITTER_API_SECRET="secret" \
+  --env TWITTER_ACCESS_TOKEN="token" \
+  --env TWITTER_ACCESS_SECRET="secret" \
+  -- npx -y twitter-mcp
 ```
+
+#### Environment Variables Required
+
+| Server | Variables |
+|--------|-----------|
+| `coolify` | `COOLIFY_BASE_URL`, `COOLIFY_ACCESS_TOKEN` |
+| `cloudflare` | `CLOUDFLARE_ACCOUNT_ID` (must be logged in via Wrangler) |
+| `github` | `GITHUB_PERSONAL_ACCESS_TOKEN` |
+| `twitter` | `TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_SECRET` |
 
 ## Manual Installation
 
@@ -204,6 +216,8 @@ claude plugins install python-development@claude-code-workflows
 
 - [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed
 - macOS, Linux, or WSL on Windows
+- Docker (for GitHub MCP server)
+- Node.js 18+ (for most MCP servers)
 
 ## Skill Highlights
 
