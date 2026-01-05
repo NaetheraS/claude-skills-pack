@@ -8,6 +8,81 @@
       "type": "stdio",
       "command": "uvx",
       "args": ["modal-mcp-toolbox"]
+    },
+    "coolify": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "coolify-mcp-server"],
+      "env": {
+        "COOLIFY_API_URL": "http://YOUR_COOLIFY_IP:8000",
+        "COOLIFY_API_TOKEN": "YOUR_API_TOKEN"
+      }
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/context7-mcp"]
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-playwright"]
+    },
+    "cloudflare-docs": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-cloudflare-docs"]
+    },
+    "cloudflare-radar": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-cloudflare-radar"],
+      "env": {
+        "CLOUDFLARE_API_TOKEN": "YOUR_CLOUDFLARE_API_TOKEN"
+      }
+    },
+    "cloudflare-browser": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-cloudflare-browser"],
+      "env": {
+        "CLOUDFLARE_API_TOKEN": "YOUR_CLOUDFLARE_API_TOKEN"
+      }
+    },
+    "github-api": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
+      }
+    },
+    "github-remote": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-github-remote"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
+      }
+    },
+    "vibe-kanban": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-vibe-kanban"],
+      "env": {
+        "VIBE_KANBAN_API_KEY": "YOUR_API_KEY"
+      }
+    },
+    "twitter": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-twitter"],
+      "env": {
+        "TWITTER_API_KEY": "YOUR_API_KEY",
+        "TWITTER_API_SECRET": "YOUR_API_SECRET",
+        "TWITTER_ACCESS_TOKEN": "YOUR_ACCESS_TOKEN",
+        "TWITTER_ACCESS_SECRET": "YOUR_ACCESS_SECRET"
+      }
     }
   }
 }
